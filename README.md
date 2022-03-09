@@ -1,4 +1,4 @@
-# Grupo 1.4 - Agricultura Familiar
+# Grupo 4 - Agricultura Familiar
 
 1. Jihad Abdul Rahman
 1. Luana Gomes da Silva
