@@ -1,8 +1,14 @@
-# Grupo 4 - Agricultura Familiar
+# AgroShop
 
-1. Jihad Abdul Rahman
-1. Luana Gomes da Silva
-1. João Victor Policello
-1. João Pedro Sousa Bianchim
-1. João Vitor de Araujo Souza
-1. Daniela Ribeiro
+Apresentação
+
+O Projeto AgroShop é um site voltado para pequenos agricultores/produtores com o objetivo de facilitar a venda de suas mercadorias de forma descomplicada.
+
+Como Baixar
+
+
+Como Usar
+
+
+Outras Informações
+
