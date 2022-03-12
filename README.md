@@ -23,3 +23,5 @@ MIT © AgroShop. Para demais informações acesse nossa [LICENÇA](https://githu
 * João Policello
 * Joao Souza
 * Luana Gomes
+
+![Python-logo-notext svg_](https://user-images.githubusercontent.com/100798125/157996831-84170c18-f149-4c7a-8e3f-446c7c8ee0b0.png)
