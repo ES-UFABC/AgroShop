@@ -24,5 +24,6 @@ MIT © AgroShop. Para demais informações acesse nossa [LICENÇA](https://githu
 * Joao Souza
 * Luana Gomes
 
-![Python-logo-notext svg_](https://user-images.githubusercontent.com/100798125/157996831-84170c18-f149-4c7a-8e3f-446c7c8ee0b0.png)
-![logo-html-css](https://user-images.githubusercontent.com/100798125/157996951-5b3a803a-cfb2-4372-bc0a-b2b244ed95ac.png)
+![PythonLogo](https://user-images.githubusercontent.com/90659182/157997590-5ade3398-ffe0-4ad9-8b06-11738af55afa.png)
+
+![logo html](https://user-images.githubusercontent.com/90659182/157997674-cccc5332-7450-461e-b409-a522650e0a54.png)
