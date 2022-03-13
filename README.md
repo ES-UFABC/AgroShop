@@ -35,8 +35,9 @@ A equipe decidiu utilizar HTML e CSS para o desenvolvimento do Front-End.
 ## Back-End
 
 ![python](https://user-images.githubusercontent.com/90659182/157997852-5f2e1f91-e72d-4ffc-8d16-88f73470d800.png)
+![FlaskLogo](https://user-images.githubusercontent.com/90659182/158082659-ffd7be95-aa18-45c2-8e78-1e345422829a.png)
 
-Para o desenvolvimento do Back-end, a equipe decidiu utilizar Python. 
+Para o desenvolvimento do Back-end, a equipe decidiu utilizar Python. O FrameWork escolhido foi o Flask por ser indicado para iniciantes. 
 
 ## Banco de Dados 
 
