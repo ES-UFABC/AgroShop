@@ -25,8 +25,22 @@ MIT © AgroShop. Para demais informações acesse nossa [LICENÇA](https://githu
 * Joao Souza
 * Luana Gomes
 
-![python](https://user-images.githubusercontent.com/90659182/157997852-5f2e1f91-e72d-4ffc-8d16-88f73470d800.png)
+# Linguagens
+## Front-End
 
 ![logo html](https://user-images.githubusercontent.com/90659182/157997674-cccc5332-7450-461e-b409-a522650e0a54.png)
+
+A equipe decidiu utilizar HTML e CSS para o desenvolvimento do Front-End.
+
+## Back-End
+
+![python](https://user-images.githubusercontent.com/90659182/157997852-5f2e1f91-e72d-4ffc-8d16-88f73470d800.png)
+
+Para o desenvolvimento do Back-end, a equipe decidiu utilizar Python. 
+
+## Banco de Dados 
+
+![MySQL-logo](https://user-images.githubusercontent.com/90659182/158082093-6a25e67d-fb45-4184-b94d-2a7ffe944d0d.png)
+
 
 <img alt="GitHub Issues" src="https://img.shields.io/github/issues/ES-UFABC/AgroShop" />
