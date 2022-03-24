@@ -14,7 +14,7 @@ O Projeto AgroShop é um site voltado para pequenos agricultores/produtores com 
 ## Licença
 
 <img alt="Github License" src="https://img.shields.io/github/license/ES-UFABC/AgroShop" />
-MIT © AgroShop. Para demais informações acesse nossa [LICENÇA](https://github.com/ES-UFABC/AgroShop/blob/main/LICENSE).
+MIT © AgroShop. Para demais informações, ver o arquivo LICENSE.
 
 ## Integrantes
 
