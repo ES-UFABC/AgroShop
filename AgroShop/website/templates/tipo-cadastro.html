@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block title %}Cadastro{% endblock %} {% block
+    content %}
+    <form action="/cadastrar/produtor" method="GET">
+        <br>
+        <h3 align="center">Tipo de Cadastro:</h3>
+        <br>
+        <div class="form-group">
+        <h3 align="center"></h3>
+        <button 
+          align="center"
+          type="submit"
+          name="buttonCadastro" 
+          class="btn btn-primary btn-lg btn-block" 
+          value="Pagina Produtor">
+          Produtor
+        </button>
+        </div>
+      </form>
+     <form action="/cadastrar/cliente" method="GET">
+        <br>
+        <br>
+        <div class="form-group">
+        <button 
+          align="center"
+          type="submit" 
+          name="buttonCadastro" 
+          class="btn btn-primary btn-lg btn-block" 
+          value="Pagina Cliente">
+          Cliente
+        </button>
+        </div>
+        <br />
+
+      </form>
+    {% endblock %}
+    
