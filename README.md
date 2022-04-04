@@ -21,9 +21,7 @@ MIT © AgroShop. Para demais informações, ver o arquivo LICENSE.
 * Daniela Ribeiro
 * Jihad Abdul
 * João Bianchim
-* João Policello
 * Joao Souza
-* Luana Gomes
 
 # Linguagens
 ## Front-End
