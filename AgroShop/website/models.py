@@ -1,4 +1,4 @@
-from . import db
+from website import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 
@@ -6,7 +6,7 @@ from sqlalchemy.sql import func
 
 class Cliente(db.Model, UserMixin):
     #Colunas
-    id = db.Column.make_declarative_base.Integer, primary_key=True
+    id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique = True)#maximo 150 caracteres, email repetido nao vale(unique)
     senha = db.Column(db.String(150))
     nome = db.Column(db.String(150))
