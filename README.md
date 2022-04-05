@@ -21,9 +21,7 @@ MIT © AgroShop. Para demais informações, ver o arquivo LICENSE.
 * Daniela Ribeiro
 * Jihad Abdul
 * João Bianchim
-* João Policello
 * Joao Souza
-* Luana Gomes
 
 # Linguagens
 ## Front-End
@@ -41,7 +39,9 @@ Para o desenvolvimento do Back-end, a equipe decidiu utilizar Python. O FrameWor
 
 ## Banco de Dados 
 
-![MySQL-logo](https://user-images.githubusercontent.com/90659182/158082093-6a25e67d-fb45-4184-b94d-2a7ffe944d0d.png)
+![SQLite-logo](https://user-images.githubusercontent.com/90659182/161594166-7197c9c7-f715-408a-a8a1-61f89c1ec765.png)
+
+Para o banco de dados, utilizaremos SQLite.
 
 
 <img alt="GitHub Issues" src="https://img.shields.io/github/issues/ES-UFABC/AgroShop" />
