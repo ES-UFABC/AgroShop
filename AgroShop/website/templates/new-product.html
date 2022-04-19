@@ -1,0 +1,64 @@
+
+<form method="POST">
+    <h3 align="center">Tipo do Produto</h3>
+    <div class="form-group">
+    <label>Tipo de Produto:
+        <br>
+        <input list="browsers" name="tipoProdutos" /></label>
+        <datalist id="tipo">
+            <option value="Alface">
+            <option value="Tomate">
+            <option value="Banana">
+            <option value="Beterraba">
+            <option value="Ovo">
+            <option value="Cenoura">
+        </datalist>
+    </div>
+    <div class="form-group">
+    <label for="quantidade">Quantidade</label>
+    <br>
+    <input type="number"
+        min="0" 
+        max="10000"
+        class="form-control"
+        id="quantidade"
+        name="quantidade"
+    />
+    </div>
+    <div class="form-group">
+        <label for="preco">Preço por unidade:</label>
+        <br>
+        <input type="number"
+            placeholder="R$"
+            step='0.01'  
+            class="form-control"
+            id="preco"
+            name="preco"
+        />
+        </div>
+    <div class="form-group">
+    <label for="data_coleta">Data de Coleta:</label>
+    <br>
+    <input
+        type="date"
+        class="form-control"
+        id="data_coleta"
+        name="data_coleta"
+        placeholder="dd/mm/aaaa"
+    />
+    </div>
+    <div class="form-group">
+        <label for="data_validade">Data de Validade:</label>
+        <br>
+        <input
+            type="date"
+            class="form-control"
+            id="data_validade"
+            name="data_validade"
+            placeholder="dd/mm/aaaa"
+        />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Cadastrar Produto</button>
+</form>
+
