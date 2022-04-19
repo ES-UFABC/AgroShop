@@ -1,10 +1,139 @@
+<head>
+    <title>Cadastro do Produto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+<style>
+    .cabecalho {
+        background-color: rgb(52, 53, 61);
+        border-bottom: solid 3px #00B131;
+        box-shadow: 0 0 5px 0 #00B131;
+        height: 55px;
+        box-sizing: content-box;
+        font-family: inherit;
+    }
+    body {
+        margin: 0;
+        font-family: 'Jost', sans-serif;
+        background: linear-gradient(to left, #ffffff, #dbffe4);
+        font-weight: bold;
+    }
 
-<form method="POST">
-    <h3 align="center">Tipo do Produto</h3>
+    input[list=browsers] {
+        position: relative;
+        width: 40%;
+        border:2px #00B131 solid;
+        border-radius: 4px;
+        margin: 8px 0;
+        outline: none;
+        padding: 8px;
+        box-sizing: border-box;
+        transition: .3s;
+        font-family: inherit;
+        text-align: center;
+    }
+    input[list=browsers]:focus {
+        border-color: #00B131;
+        box-shadow: 0 0 8px 0 #50ff7f;
+    }
+    input[type=number] {
+        width: 40%;
+        border:2px #00B131 solid;
+        border-radius: 4px;
+        margin: 8px 0;
+        outline: none;
+        padding: 8px;
+        box-sizing: border-box;
+        transition: .3s;
+        font-family: inherit;
+        text-align: center;
+    }
+    input[type=number]:focus {
+        border-color: #00B131;
+        box-shadow: 0 0 8px 0 #50ff7f;
+    }
+    input[type=date] {
+        width: 40%;
+        border:2px #00B131 solid;
+        border-radius: 4px;
+        margin: 8px 0;
+        outline: none;
+        padding: 8px;
+        box-sizing: border-box;
+        transition: .3s;
+        font-family: inherit;
+        text-align: center;
+    }
+    input[type=date]:focus {
+        border-color: #00B131;
+        box-shadow: 0 0 8px 0 #50ff7f;
+    }
+    .btn {
+        font-family: inherit;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 1.25rem;
+        padding: 10px 545px;
+        text-align: center;
+    }
+    .destaque {
+        color: #000000;
+        border-radius: 40px;
+        background: linear-gradient(to right, #00B131, #50ff7f);
+        box-shadow: 0 0 8px 0 #50ff7f;
+    }
+    .destaque:active {
+        box-shadow: none;
+    }
+    .menu {
+        display: inline-block;
+        vertical-align: top;
+        height: 5px;
+        padding: 10px;
+    }
+    .menu ul {
+        margin: 0;
+        padding: 0;
+    }
+    .menu li {
+        display: inline-block;
+    }
+    .menu a {
+        text-decoration: none;
+        color: #26d755;
+        font-size: 1.3em;
+        text-shadow: 2px 2px 2px #2d2d2d;
+        padding: 15px;
+    }
+    .menu a:hover{
+        box-shadow: none;
+    }
+    .form-group{
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+    <header class="cabecalho"> <nav class="menu">
+        <ul>
+            <li>
+                <a href="http://127.0.0.1:5000">Home</a>
+            </li>
+            <li>
+                <a href="logout">Logout</a>
+            </li>
+            <li>
+                <a href="entrar">Entrar</a>
+            </li>
+            <li>
+                <a href="cadastrar">Cadastrar</a>
+            </li>
+        </ul>
+    </nav> </header>
+    <form method="POST">
+    <h3 align="center">CADASTRO DO PRODUTO</h3>
     <div class="form-group">
-    <label>Tipo de Produto:
-        <br>
-        <input list="browsers" name="tipoProdutos" /></label>
+    <label>Tipo do Produto <br>
+        <input list="browsers" placeholder="Digite o tipo do Produto" name="tipoProdutos"/>
+    </label>
         <datalist id="tipo">
             <option value="Alface">
             <option value="Tomate">
@@ -15,15 +144,16 @@
         </datalist>
     </div>
     <div class="form-group">
-    <label for="quantidade">Quantidade</label>
+        <label for="quantidade">Quantidade</label>
     <br>
-    <input type="number"
-        min="0" 
-        max="10000"
-        class="form-control"
-        id="quantidade"
-        name="quantidade"
-    />
+        <input type="number"
+            min="0" 
+            max="10000"
+            class="form-control"
+            id="quantidade"
+            name="quantidade"
+            placeholder="Digite a Quantidade"
+        />
     </div>
     <div class="form-group">
         <label for="preco">Preço por unidade:</label>
@@ -35,17 +165,17 @@
             id="preco"
             name="preco"
         />
-        </div>
+    </div>
     <div class="form-group">
-    <label for="data_coleta">Data de Coleta:</label>
-    <br>
-    <input
-        type="date"
-        class="form-control"
-        id="data_coleta"
-        name="data_coleta"
-        placeholder="dd/mm/aaaa"
-    />
+        <label for="data_coleta">Data de Coleta:</label>
+        <br>
+        <input
+            type="date"
+            class="form-control"
+            id="data_coleta"
+            name="data_coleta"
+            placeholder="dd/mm/aaaa"
+        />
     </div>
     <div class="form-group">
         <label for="data_validade">Data de Validade:</label>
@@ -59,6 +189,6 @@
         />
     </div>
     <br />
-    <button type="submit" class="btn btn-primary">Cadastrar Produto</button>
+    <a href="HomeProd" class="btn destaque">Cadastrar Produto</a>
 </form>
-
+</body>
