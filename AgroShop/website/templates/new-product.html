@@ -16,24 +16,6 @@
         background: linear-gradient(to left, #ffffff, #dbffe4);
         font-weight: bold;
     }
-
-    input[list=browsers] {
-        position: relative;
-        width: 40%;
-        border:2px #00B131 solid;
-        border-radius: 4px;
-        margin: 8px 0;
-        outline: none;
-        padding: 8px;
-        box-sizing: border-box;
-        transition: .3s;
-        font-family: inherit;
-        text-align: center;
-    }
-    input[list=browsers]:focus {
-        border-color: #00B131;
-        box-shadow: 0 0 8px 0 #50ff7f;
-    }
     input[type=number] {
         width: 40%;
         border:2px #00B131 solid;
@@ -50,7 +32,7 @@
         border-color: #00B131;
         box-shadow: 0 0 8px 0 #50ff7f;
     }
-    input[type=date] {
+    input[type=text] {
         width: 40%;
         border:2px #00B131 solid;
         border-radius: 4px;
@@ -62,7 +44,7 @@
         font-family: inherit;
         text-align: center;
     }
-    input[type=date]:focus {
+    input[type=text]:focus {
         border-color: #00B131;
         box-shadow: 0 0 8px 0 #50ff7f;
     }
@@ -110,22 +92,36 @@
         text-shadow: 2px 2px 2px #2d2d2d;
         padding: 15px;
     }
-    .menu a:hover{
-        box-shadow: none;
+    .menu a:hover {
+        color: #74ea93;
     }
     .form-group{
         text-align: center;
     }
+    .opcao{
+        width: 100%;
+        border:2px #00B131 solid;
+        border-radius: 4px;
+        margin: 8px 0;
+        outline: none;
+        padding: 8px;
+        box-sizing: border-box;
+        transition: .3s;
+        font-family: inherit;
+        text-align: center;
+    }
+    .opcao:focus{
+        border-color: #00B131;
+        box-shadow: 0 0 8px 0 #50ff7f;
+    }
 </style>
 </head>
 <body>
-    <header class="cabecalho"> <nav class="menu">
+    <header class="cabecalho"> 
+        <nav class="menu">
         <ul>
             <li>
-                <a href="http://127.0.0.1:5000">Home</a>
-            </li>
-            <li>
-                <a href="logout">Logout</a>
+                <a href="/">Home</a>
             </li>
             <li>
                 <a href="entrar">Entrar</a>
@@ -133,14 +129,17 @@
             <li>
                 <a href="cadastrar">Cadastrar</a>
             </li>
+            <li>
+              <a href="logout">Logout</a>
+          </li>
         </ul>
-    </nav> </header>
+    </nav> 
+    </header>
     <form method="POST">
     <h3 align="center">CADASTRO DO PRODUTO</h3>
     <div class="form-group">
         <label>Tipo do Produto <br> </label>
-        <input list="produtos" placeholder="Digite o tipo do Produto" name="tipoProdutos" >
-         <select class="form-control" name="tipo" style="width:300px;" placeholder="Digite o tipo do Produto">
+         <select class="opcao" name="tipo" style="width:300px;" placeholder="Digite o tipo do Produto">
                 <option selected value="Alface">Alface</option>
                 <option value="Tomate">Tomate</option>
                 <option value="Banana">Banana</option>

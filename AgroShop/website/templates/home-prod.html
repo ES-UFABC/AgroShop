@@ -1,19 +1,109 @@
-{% extends "base.html" %} {% block title %}Home Produtor{% endblock %} {% block
-    content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeProd</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    body{
+        margin: 0;
+        font-family: 'Jost', sans-serif;
+        background: linear-gradient(to left, #ffffff, #dbffe4);
+        font-weight: bold;
+    }
+    .cabecalho {
+        margin: 0%;
+        background-color: rgb(52, 53, 61);
+        border-bottom: solid 3px #00B131;
+        box-shadow: 0 0 5px 0 #00B131;
+        height: 55px;
+        box-sizing: content-box;
+    }
+    .menu {
+        display: inline-block;
+        vertical-align: top;
+        height: 5px;
+        padding: 10px;
+    }
+    .menu ul {
+        margin: 0;
+        padding: 0;
+    }
+    .menu li {
+        display: inline-block;
+    }
+    .menu a:hover {
+        color: #74ea93;
+    }
+    .menu a {
+        text-decoration: none;
+        color: #26d755;
+        font-size: 1.3em;
+        text-shadow: 2px 2px 2px #2d2d2d;
+        padding: 15px;
+    }
+    .menu a:hover{
+        box-shadow: none;
+    }
+    .container {
+        display: flex;
+        flex-direction:row;
+        justify-content: space-evenly ;
+        align-items: center;
+        text-align: center;
+    }
+    .btn-1{
+        width: 300px;
+        border: none;
+        color: #50ff7f;
+        background-color: #2d2d2d;
+        border-radius: 4px;
+        box-shadow: inset 0 0 0 0 #50ff7f;
+        transition: ease-out 0.185s;
+        font-size: 30px;
+        outline: none;
+        font-family: inherit;
+    }
+    .btn-1:hover{
+        box-shadow: inset 300px 0 0 0 #50ff7f;
+        cursor: pointer;
+        color: #2d2d2d;
+    }
+</style>
+<body>
+    <header class="cabecalho"> 
+        <nav class="menu">
+        <ul>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="entrar">Entrar</a>
+            </li>
+            <li>
+                <a href="cadastrar">Cadastrar</a>
+            </li>
+            <li>
+              <a href="logout">Logout</a>
+          </li>
+        </ul>
+    </nav> 
+    </header>
     <form action="/NovoProduto" method="GET">
         <br>
         <h3 align="center">Cadastrar Produto:</h3>
         <br>
-        <div class="form-group">
-        <h3 align="center"></h3>
-        <button 
-          align="center"
-          type="submit"
-          name="buttonCadastro" 
-          class="btn btn-primary btn-lg btn-block" 
-          value="Pagina Produtor">
-          Produtor
-        </button>
+        <div class="container"> 
+            <button class="btn-1"
+            value="Pagina Produtor"
+            name="buttonCadastro">Produtor</button>
         </div>
     </form>
-    {% endblock %}
+</body>
+</html>
