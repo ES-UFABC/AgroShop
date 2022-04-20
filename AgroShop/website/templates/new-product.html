@@ -138,17 +138,17 @@
     <form method="POST">
     <h3 align="center">CADASTRO DO PRODUTO</h3>
     <div class="form-group">
-    <label>Tipo do Produto <br>
-        <input list="browsers" placeholder="Digite o tipo do Produto" name="tipoProdutos"/>
-    </label>
-        <datalist id="tipo">
-            <option value="Alface">
-            <option value="Tomate">
-            <option value="Banana">
-            <option value="Beterraba">
-            <option value="Ovo">
-            <option value="Cenoura">
-        </datalist>
+        <label>Tipo do Produto <br> </label>
+        <input list="produtos" placeholder="Digite o tipo do Produto" name="tipoProdutos" >
+         <select class="form-control" name="tipo" style="width:300px;" placeholder="Digite o tipo do Produto">
+                <option selected value="Alface">Alface</option>
+                <option value="Tomate">Tomate</option>
+                <option value="Banana">Banana</option>
+                <option value="Beterraba">Beterraba</option>
+                <option value="Ovo">Ovo</option>
+                <option value="Cenoura">Cenoura</option>
+            </select>
+       
     </div>
     <div class="form-group">
         <label for="quantidade">Quantidade</label>
@@ -177,7 +177,7 @@
         <label for="data_coleta">Data de Coleta:</label>
         <br>
         <input
-            type="date"
+            type="text"
             class="form-control"
             id="data_coleta"
             name="data_coleta"
@@ -188,7 +188,7 @@
         <label for="data_validade">Data de Validade:</label>
         <br>
         <input
-            type="date"
+            type="text"
             class="form-control"
             id="data_validade"
             name="data_validade"

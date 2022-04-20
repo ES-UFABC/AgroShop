@@ -6,7 +6,6 @@ from sqlalchemy.sql import func
 #Tabelas
 
 class Cliente(db.Model, UserMixin):
-    #Colunas
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique = True)#maximo 150 caracteres, email repetido nao vale(unique)
     senha = db.Column(db.String(150))

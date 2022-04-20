@@ -3,6 +3,7 @@ from website import views
 from werkzeug.security import generate_password_hash, check_password_hash
 from .models import Cliente, Produtor, Produto
 from . import db
+from datetime import date
 
 auth = Blueprint('auth', __name__)
 
@@ -101,13 +102,12 @@ def novo_produto(id= id):
         tipo = request.form.get('tipo')
         quantidade = request.form.get('quantidade')
         preco = request.form.get('preco')
-        coleta = request.form.get('data_coleta')
-        
-        print("\n\n\n\n\n",coleta, type(coleta), "\n\n\n\n\n\n")
+        strColeta = request.form.get('data_coleta')
+        coleta = date(int(strColeta[0:4]), int(strColeta[5:7]), int(strColeta[8:]))       
+        strValidade = request.form.get('data_validade')
+        validade = date(int(strValidade[0:4]), int(strValidade[5:7]), int(strValidade[8:]))
 
-        validade = request.form.get('data_validade')
-
-        novo_produto = Produto(tipo=tipo, quantidade=quantidade, preco=preco, dataColeta = coleta, dataValidade = validade, idProd = id)
+        novo_produto = Produto(tipo=tipo, quantidade=quantidade, preco=preco, dataColeta = coleta, dataValidade = validade, idProd = 1)
         db.session.add(novo_produto)
         db.session.commit()
         flash('Produto Registrado', category='success')
