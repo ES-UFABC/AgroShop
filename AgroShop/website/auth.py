@@ -1,3 +1,4 @@
+import sqlite3
 from flask import Blueprint, render_template, request, flash, redirect, session, url_for
 from website import views
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -61,7 +62,7 @@ def sign_up_client():
             db.session.add(new_user)
             db.session.commit()
             flash('Account created!', category='success')
-            return redirect(url_for('auth.home_cliente'))
+            #return redirect(url_for('auth.home_cliente'))
 
     return render_template("sign-up-client.html")
 
@@ -119,5 +120,9 @@ def novo_produto():
 
 @auth.route('/HomeCliente', methods = ['GET', 'POST'])
 def home_cliente():
-
-    return render_template("home-cliente.html")
+    con = sqlite3.connect('AgroShop\website\database.db')
+    db = con.cursor()
+    Produtos = db.execute("SELECT * FROM Produto")
+    Produto=Produtos.fetchall()
+    con.close()
+    return render_template("home-cliente.html",Produto=Produto)
