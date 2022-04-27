@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, session, url_for
 from website import views
 from werkzeug.security import generate_password_hash, check_password_hash
 from .models import Cliente, Produtor, Produto
@@ -11,11 +11,12 @@ auth = Blueprint('auth', __name__)
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
-        senha = request.form.get('senha')
+        senha = request.form.get('password')
         usuario = Cliente.query.filter_by(email=email).first()
         if usuario:
             if check_password_hash(usuario.senha, senha):
                 flash('Login efetuado com Sucesso!', category='success')
+                return redirect(url_for('auth.home_cliente'))
             else:
                 flash('Senha Incorreta', category='error')
         else:
@@ -23,7 +24,8 @@ def login():
             if usuario:
                 if check_password_hash(usuario.senha, senha):
                     flash('Login efetuado com Sucesso!', category='success')
-                    return redirect(url_for('auth.novo_produto', id= usuario.id))
+                    session['conta'] = usuario.id
+                    return redirect(url_for('auth.home_prod'))
                 else:
                     flash('Senha Incorreta', category='error')
             else:
@@ -59,7 +61,7 @@ def sign_up_client():
             db.session.add(new_user)
             db.session.commit()
             flash('Account created!', category='success')
-            return redirect(url_for('views.home'))
+            return redirect(url_for('auth.home_cliente'))
 
     return render_template("sign-up-client.html")
 
@@ -93,11 +95,11 @@ def sign_up_prod():
     return render_template("sign-up-prod.html")
 
 @auth.route('/HomeProd', methods = ['GET', 'POST'])
-def home_prod(id):
+def home_prod():
     return render_template("home-prod.html")
 
 @auth.route('/NovoProduto', methods = ['GET', 'POST'])
-def novo_produto(id= id):
+def novo_produto():
     if request.method == 'POST':    
         tipo = request.form.get('tipo')
         quantidade = request.form.get('quantidade')
@@ -106,10 +108,16 @@ def novo_produto(id= id):
         coleta = date(int(strColeta[0:4]), int(strColeta[5:7]), int(strColeta[8:]))       
         strValidade = request.form.get('data_validade')
         validade = date(int(strValidade[0:4]), int(strValidade[5:7]), int(strValidade[8:]))
+        idProd = session.get('conta', None) 
 
-        novo_produto = Produto(tipo=tipo, quantidade=quantidade, preco=preco, dataColeta = coleta, dataValidade = validade, idProd = 1)
+        novo_produto = Produto(tipo=tipo, quantidade=quantidade, preco=preco, dataColeta = coleta, dataValidade = validade, idProd = idProd)
         db.session.add(novo_produto)
         db.session.commit()
         flash('Produto Registrado', category='success')
-        return redirect(url_for('views.home'))
+        return redirect(url_for('auth.home_prod'))
     return render_template("new-product.html")
+
+@auth.route('/HomeCliente', methods = ['GET', 'POST'])
+def home_cliente():
+
+    return render_template("home-cliente.html")

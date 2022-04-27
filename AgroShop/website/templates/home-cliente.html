@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroShop - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    body{
+        margin: 0;
+        font-family: 'Jost', sans-serif;
+        background: linear-gradient(to left, #ffffff, #dbffe4);
+        font-weight: bold;
+    }
+    .cabecalho {
+        margin: 0%;
+        background-color: rgb(52, 53, 61);
+        border-bottom: solid 3px #00B131;
+        box-shadow: 0 0 5px 0 #00B131;
+        height: 55px;
+        box-sizing: content-box;
+    }
+    .menu {
+        display: inline-block;
+        vertical-align: top;
+        height: 5px;
+        padding: 10px;
+    }
+    .menu ul {
+        margin: 0;
+        padding: 0;
+    }
+    .menu li {
+        display: inline-block;
+    }
+    .menu a:hover {
+        color: #74ea93;
+    }
+    .menu a {
+        text-decoration: none;
+        color: #26d755;
+        font-size: 1.3em;
+        text-shadow: 2px 2px 2px #2d2d2d;
+        padding: 15px;
+    }
+    h1 {
+        text-align: center;
+    }
+</style>
+<body>
+    <header class="cabecalho"> 
+        <nav class="menu">
+        <ul>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="entrar">Entrar</a>
+            </li>
+            <li>
+                <a href="cadastrar">Cadastrar</a>
+            </li>
+            <li>
+              <a href="logout">Logout</a>
+          </li>
+        </ul>
+    </nav> 
+    </header>
+    <h1>AgroShop Home</h1>
+    
+    
+    <html>
+        <head>
+        <title>Exemplo</title>
+    </head>
+    <body>
+        
+    <?php
+        // se o número de resultados for maior que zero, mostra os dados
+        if($total > 0) {
+            // inicia o loop que vai mostrar todos os dados
+            do {
+    ?>
+                <p><?=$linha['nome']?> / <?=$linha['telefone']?></p>
+    <?php
+            // finaliza o loop que vai mostrar os dados
+            }while($linha = mysql_fetch_assoc($dados));
+        // fim do if 
+        }
+    ?>
+    </body>
+    </html>
+    <?php
+    // tira o resultado da busca da memória
+    mysql_free_result($dados);
+    ?>
+</body>
+</html>
