@@ -6,16 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgroShop - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style>
     * {
         box-sizing: border-box;
     }
-    body{
+    body {
         margin: 0;
-        font-family: 'Jost', sans-serif;
+        font-family: 'poppins', 'Jost', sans-serif;
         background: linear-gradient(to left, #ffffff, #dbffe4);
         font-weight: bold;
+        font-size: 1em;
+        transition: 0.2s;
     }
     .cabecalho {
         margin: 0%;
@@ -48,29 +51,223 @@
         text-shadow: 2px 2px 2px #2d2d2d;
         padding: 15px;
     }
-    h1 {
-        text-align: center;
+    footer {
+        background-color: #666;
+        padding: 20px;
+        border-top: 5px solid #3381F3;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+    }
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        
+    }
+    footer h2,
+    footer p,
+    footer a,
+    footer span {
+        color: #D1D1D1;
+    }
+    footer h2 {
+        font-weight: 200;
+    }
+    footer a {
+        text-decoration: none;
+    }
+    footer ul {
+        padding: 0;
+    }
+    footer li {
+        list-style: none;
+    }
+    .footer-box {
+        width: 31%;
+        padding: 1%;
+        float: left;
+    }
+    footer .wrapper:after {
+        clear: both;
+        content: "";
+        display: block;
+    }
+    .company-footer {
+        width: 80%;
+    }
+    .company-footer h2 {
+        margin-top: 20px;
+    }
+    .company-footer h2,
+    company-footer p {
+        margin-bottom: 20px;
+    }
+    .footer-list li {
+        margin-bottom: 15px;
+    }
+    .footer-list a {
+        transition: .5s;
+    }
+    .footer-list a:hover {
+        color: #FFF;
+    }
+    .footer-list li:after {
+        clear: both;
+        content: "";
+        display: block;
+    }
+    .wrapper2 {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+    .wrapper2 .buttons {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        margin-bottom: 20px;
+    }
+    .wrapper2 .buttons .btn {
+        padding: 0 10px;
+        display: flex;
+        background-color: #515151;
+        color: #fff;
+        margin-left: 5px;
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-size: 12px;
+    }
+    .wrapper2 .buttons .btn.active {
+        background-color: #04a9f5;
+    }
+    .wrapper2 .buttons .btn:nth-child(2) {
+        font-size: 16px;
+        width: 30px;
+        height: 30px;
+    }
+    .wrapper2 .buttons .btn:nth-child(3) {
+        font-size: 20px;
+        width: 35px;
+        height: 35px;
+    }
+    .footer {
+        height: 30%;
     }
 </style>
 <body>
-    <header class="cabecalho"> 
-        <nav class="menu">
-        <ul>
-            <li>
-                <a href="/">Home</a>
-            </li>
-            <li>
-                <a href="entrar">Entrar</a>
-            </li>
-            <li>
-                <a href="cadastrar">Cadastrar</a>
-            </li>
-            <li>
-              <a href="logout">Logout</a>
-          </li>
-        </ul>
-    </nav> 
-    </header>
-    <h1>AgroShop Home</h1>
+    <div id="txt">
+        <header class="cabecalho">
+            <nav class="menu">
+                <ul>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="entrar">Entrar</a>
+                    </li>
+                    <li>
+                        <a href="cadastrar">Cadastrar</a>
+                    </li>
+                    <li>
+                        <a href="logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="wrapper2">
+            <div class="buttons">
+                <span class="btn active" onclick="document.getElementById('txt').style.fontSize = '1em'">A</span>
+                <span class="btn" onclick="document.getElementById('txt').style.fontSize = '1.25em'">A</span>
+                <span class="btn" onclick="document.getElementById('txt').style.fontSize = '1.5em'">A</span>
+            </div>
+            <div class="content">
+                <h2>Home</h2>
+                <p>conteudo</p>
+            </div>
+        </div>
+
+
+
+        <div class="footer">
+            <footer>
+                <div class="wrapper">
+                    <div class="footer-box">
+                        <div class="company-footer">
+                            <img src="../static/img/logo_horta.png" />
+                            <h2>AgroShop</h2>
+                            <p>A maneira mais fácil de encontrar produtos agrícolas</p>
+                        </div>
+                    </div>
+                    <div class="footer-box">
+                        <div class="articles-footer">
+                            <h2>Artigos recentes</h2>
+                            <ul class="footer-list footer-article-list">
+                                <li>
+                                    <a href="#">Produtos agrícolas</a>
+                                    <span class="article-date">05 de fevereiro de 2019</span>
+                                </li>
+                                <li>
+                                    <a href="#">Produtos agrícolas</a>
+                                    <span class="article-date">05 de fevereiro de 2019</span>
+                                </li>
+                                <li>
+                                    <a href="#">Produtos agrícolas</a>
+                                    <span class="article-date">05 de fevereiro de 2019</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-box">
+                        <h2> Nos encontre nas redes sociais</h2>
+                        <ul class="footer-list">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                                    <span>Facebook</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-instagram"></i>
+                                    <span>Instagram</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-linkedin-square"></i>
+                                    <span>Linkedin</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="wrapper">
+                        <p>AgroShop</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        let buttons = document.querySelector('.buttons');
+        let btn = document.querySelectorAll('.btn');
+        for (var i = 0; i < btn.length; i++) {
+            btn[i].addEventListener('click', function () {
+                let current = document.getElementsByClassName('active');
+                current[0].className = current[0].className.replace("active", "");
+                this.className += " active";
+            })
+        }
+    </script>
 </body>
 </html>

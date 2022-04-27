@@ -4,8 +4,6 @@ from os import path
 
 db = SQLAlchemy()
 
-
-
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'Grupo _4'
@@ -21,11 +19,7 @@ def create_app():
 
     from .models import Cliente, Produtor, Produto
 
-    criar_dataBase(app)
-
-    return app
-
-def criar_dataBase(app):
-    if not path.exists('website/database.db'):
+    if not path.exists('database.db'):
         db.create_all(app=app)
         print('DataBase Criado!')
+    return app
