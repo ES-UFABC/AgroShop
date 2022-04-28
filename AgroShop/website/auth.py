@@ -122,7 +122,9 @@ def novo_produto():
 def home_cliente():
     con = sqlite3.connect('AgroShop\website\database.db')
     db = con.cursor()
-    Produtos = db.execute("SELECT * FROM Produto")
+    Produtos = db.execute("SELECT Produtor.Nome, Produto.tipo, Produto.preco, Produto.quantidade, Produto.dataColeta, Produto.dataValidade " + 
+    "FROM Produto " +
+    "INNER JOIN Produtor on Produto.idProd=Produtor.id")
     Produto=Produtos.fetchall()
     con.close()
     return render_template("home-cliente.html",Produto=Produto)
