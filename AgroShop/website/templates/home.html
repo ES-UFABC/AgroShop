@@ -1,321 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgroShop - Home</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,700&family=Nunito:wght@700&family=Yellowtail&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" href="../static/css/home.css">
 </head>
 <style>
-    * {
-        box-sizing: border-box;
-    }
-    body {
-        margin: 0;
-        font-family: 'poppins', 'Jost', sans-serif;
-        background: linear-gradient(to left, #ffffff, #dbffe4);
-        font-weight: bold;
-        font-size: 1em;
-        transition: 0.2s;
-    }
-    .cabecalho {
-        margin: 0%;
-        background-color: rgb(52, 53, 61);
-        border-bottom: solid 3px #00B131;
-        box-shadow: 0 0 5px 0 #00B131;
-        height: 55px;
-        box-sizing: content-box;
-    }
-    .menu {
-        display: inline-block;
-        vertical-align: top;
-        height: 5px;
-        padding: 10px;
-    }
-    .menu ul {
-        margin: 0;
-        padding: 0;
-    }
-    .menu li {
-        display: inline-block;
-    }
-    .menu a:hover {
-        color: #74ea93;
-    }
-    .menu a {
-        text-decoration: none;
-        color: #26d755;
-        font-size: 1.3em;
-        text-shadow: 2px 2px 2px #2d2d2d;
-        padding: 15px;
-    }
-    footer {
-        background-color: #666;
-        padding: 20px;
-        border-top: 5px solid #3381F3;
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-    }
-    .wrapper {
-        display: flex;
-        justify-content: space-between;
-        
-    }
-    footer h2,
-    footer p,
-    footer a,
-    footer span {
-        color: #D1D1D1;
-    }
-    footer h2 {
-        font-weight: 200;
-    }
-    footer a {
-        text-decoration: none;
-    }
-    footer ul {
-        padding: 0;
-    }
-    footer li {
-        list-style: none;
-    }
-    .footer-box {
-        width: 31%;
-        padding: 1%;
-        float: left;
-    }
-    footer .wrapper:after {
-        clear: both;
-        content: "";
-        display: block;
-    }
-    .company-footer {
-        width: 80%;
-    }
-    .company-footer h2 {
-        margin-top: 20px;
-    }
-    .company-footer h2,
-    company-footer p {
-        margin-bottom: 20px;
-    }
-    .footer-list li {
-        margin-bottom: 15px;
-    }
-    .footer-list a {
-        transition: .5s;
-    }
-    .footer-list a:hover {
-        color: #FFF;
-    }
-    .footer-list li:after {
-        clear: both;
-        content: "";
-        display: block;
-    }
-    .wrapper2 {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        margin: 20px auto;
-        padding: 0 20px;
-    }
-    .wrapper2 .buttons {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-end;
-        margin-bottom: 20px;
-    }
-    .wrapper2 .buttons .btn {
-        padding: 0 10px;
-        display: flex;
-        background-color: #515151;
-        color: #fff;
-        margin-left: 5px;
-        cursor: pointer;
-        width: 25px;
-        height: 25px;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-        font-size: 12px;
-    }
-    .wrapper2 .buttons .btn.active {
-        background-color: #04a9f5;
-    }
-    .wrapper2 .buttons .btn:nth-child(2) {
-        font-size: 16px;
-        width: 30px;
-        height: 30px;
-    }
-    .wrapper2 .buttons .btn:nth-child(3) {
-        font-size: 20px;
-        width: 35px;
-        height: 35px;
-    }
-    .footer {
-        height: 30%;
-    }
-    .alert-danger{
-        padding: 20px;
-        margin-left: 450px;
-        margin-right: 450px;
-        margin-bottom: 20px;
-        background-color: rgb(235, 98, 98);
-        text-align: center;
-     }
-    .alert-success{
-        padding: 20px;
-        margin-left: 450px;
-        margin-right: 450px;
-        margin-bottom: 20px;
-        background-color: #50ff7f;
-        text-align: center;
-    }
+
 </style>
+
 <body>
-    <div id="txt">
-        <header class="cabecalho">
-            <nav class="menu">
-                <ul>
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    <li>
-                        <a href="entrar">Entrar</a>
-                    </li>
-                    <li>
-                        <a href="cadastrar">Cadastrar</a>
-                    </li>
-                    <li>
-                        <a href="logout">Logout</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        {% with messages = get_flashed_messages(with_categories=true) %} {% if
-            messages %} {% for category, message in messages %} {% if category ==
-            'error' %}
-            <div class="alert alert-danger alter-dismissable fade show" role="alert">
-            {{ message }}
-            <button type="button" class="close" data-dismiss="alert">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            {% else %}
-            <div class="alert alert-success alter-dismissable fade show" role="alert">
-            {{ message }}
-            <button type="button" class="close" data-dismiss="alert">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            {% endif %} {% endfor %} {% endif %} {% endwith %}
-        <div class="wrapper2">
-            <div class="buttons">
-                <span class="btn active" onclick="document.getElementById('txt').style.fontSize = '1em'">A</span>
-                <span class="btn" onclick="document.getElementById('txt').style.fontSize = '1.25em'">A</span>
-                <span class="btn" onclick="document.getElementById('txt').style.fontSize = '1.5em'">A</span>
-            </div>
-            <div class="content">
-                <h2>Home</h2>
-                <p>conteudo</p>
-            </div>
-        </div>
-
-
-
-        <div class="footer">
-            <footer>
-                <div class="wrapper">
-                    <div class="footer-box">
-                        <div class="company-footer">
-                            <img src="../static/img/logo_horta.png" />
-                            <h2>AgroShop</h2>
-                            <p>A maneira mais fácil de encontrar produtos agrícolas</p>
-                        </div>
-                    </div>
-                    <div class="footer-box">
-                        <div class="articles-footer">
-                            <h2>Artigos recentes</h2>
-                            <ul class="footer-list footer-article-list">
-                                <li>
-                                    <a href="#">Produtos agrícolas</a>
-                                    <span class="article-date">05 de fevereiro de 2019</span>
-                                </li>
-                                <li>
-                                    <a href="#">Produtos agrícolas</a>
-                                    <span class="article-date">05 de fevereiro de 2019</span>
-                                </li>
-                                <li>
-                                    <a href="#">Produtos agrícolas</a>
-                                    <span class="article-date">05 de fevereiro de 2019</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="footer-box">
-                        <h2> Nos encontre nas redes sociais</h2>
-                        <ul class="footer-list">
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-facebook-square" aria-hidden="true"></i>
-                                    <span>Facebook</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-instagram"></i>
-                                    <span>Instagram</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-linkedin-square"></i>
-                                    <span>Linkedin</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <div class="wrapper">
-                        <p>AgroShop</p>
-                    </div>
-                </div>
-            </footer>
-        </div>
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if category ==
+    'error' %}
+    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-    <script>
-        let buttons = document.querySelector('.buttons');
-        let btn = document.querySelectorAll('.btn');
-        for (var i = 0; i < btn.length; i++) {
-            btn[i].addEventListener('click', function () {
-                let current = document.getElementsByClassName('active');
-                current[0].className = current[0].className.replace("active", "");
-                this.className += " active";
-            })
-        }
-    </script>
+    {% else %}
+    <div class="alert alert-success alter-dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+    
+
+    <nav>
+        <a href="#">AgroShop</a>
+        <ul>
+            <li><a href="entrar">Entrar</a></li>
+            <li><a href="cadastrar">Cadastrar</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#serviços">Serviços</a></li>
+            <li><a href="#fotos">Fotos</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <header id="topo">
+        <h1>AgroShop</h1>
+        <p>A maneira mais fácil de comprar e vender produtos agrícolas</p>
+        <a href="#serviços" class="botao">Ver mais</a>
+    </header>
+
+    <section id="sobre">
+        <h2>Sobre</h2>
+        <p>Com AgroShop é muito mais simples comprar e vender produtos agrícolas</p>
+        <a href="#contato" class="botao">Começe Agora</a>
+    </section>
+
+
+    <section id="serviços">
+        <h2>Serviços</h2>
+        <div>
+            <img src="../static/img/icon_buy.png" alt="Carrinho de compra">
+            <h3>Compra Simples</h3>
+            <p>Encontre e Compre produtos agrícolas com facilidade</p>
+        </div>
+
+        <div>
+            <img src="../static/img/icon_clock.png" alt="Relógio">
+            <h3>Velocidade</h3>
+            <p>Com o campo de busca inteligente, você encontra muito mais rápido o que procura</p>
+        </div>
+
+        <div>
+            <img src="../static/img/icon_heart.png" alt="Coração">
+            <h3>Favorite</h3>
+            <p>No AgroShop é possível favoritar seus produtos!</p>
+        </div>
+    </section>
+
+    <section id="fotos">
+        <h2>Fotos</h2>
+        <img src="../static/img/tea.jpg" alt="Laranjas">
+        <img src="../static/img/barley.jpg" alt="Cevadas">
+        <img src="../static/img/grapes.jpg" alt="Uvas">
+        <img src="../static/img/icon_beetroot.jpg" alt="Árvores">
+        <img src="../static/img/icon_potates.jpg" 
+        alt="Cenouras">
+        <img src="../static/img/apples.jpg" alt="Maçãs">
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+        <p>Fale Conosco!</p>
+        <div>
+            <img src="../static/img/icon_whatsapp.png" alt="WhatsApp">
+            <p><a href="tel:11123456789"></a>(11)12345-6789</p>
+        </div>
+        <div>
+            <img src="../static/img/icon_gmail.png" alt="E-mail">
+            <p><a href="mailto:agroshop@gmail.com"></a>agroshop@gmail.com</p>
+        </div>
+    </section>
+
+    <footer>
+        <a href="#topo">Voltar ao topo</a>
+        <p>Desenvolvido por Grupo 21</p>
+    </footer>
+
 </body>
 </html>
