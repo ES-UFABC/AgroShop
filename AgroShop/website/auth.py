@@ -120,11 +120,19 @@ def novo_produto():
 
 @auth.route('/HomeCliente', methods = ['GET', 'POST'])
 def home_cliente():
+    if request.method== 'POST':
+        quantidade = request.form.get('quantidade')
+
+    querry = """SELECT Produto.Id, Produtor.Nome, Produto.tipo, Produto.preco, Produto.quantidade, Produto.dataColeta, Produto.dataValidade 
+    FROM Produto INNER JOIN Produtor on Produto.idProd=Produtor.id"""
     con = sqlite3.connect('AgroShop\website\database.db')
     db = con.cursor()
-    Produtos = db.execute("SELECT Produtor.Nome, Produto.tipo, Produto.preco, Produto.quantidade, Produto.dataColeta, Produto.dataValidade " + 
-    "FROM Produto " +
-    "INNER JOIN Produtor on Produto.idProd=Produtor.id")
+    Produtos = db.execute(querry)
     Produto=Produtos.fetchall()
     con.close()
     return render_template("home-cliente.html",Produto=Produto)
+
+@auth.route('/MeuCarrinho', methods = ['GET', 'POST'])
+def meu_carrinho():
+    return render_template("home-cliente.html")
+
