@@ -156,16 +156,22 @@
 
             {% for produto in Produto %}
             <tr>
-                <a href="#serviços" class="botao">{{produto}}</a>
-                <input type="number" min="0" max="10000" class="form-control" id="{{produto[0]}}" name="quantidade"
+                <div class="form-group">
+                    <a href="#serviços" class="botao">{{produto}}</a>
+                    <input type="number" min="0" max="10000" class="form-control" id="id {{produto[0]}}" name="id {{produto[0]}}"
                     placeholder="Digite a Quantidade" />
+                </div>
             </tr>
             <br>
             <br>
             <br>
             {% endfor %}
-        
-        <button class="btn-1">Adicionar ao Carrinho</button>
+            <br>
+            <br>
+            {{soma}} Produtos selecionado      Valor Total: R${{PrecoTotal}}
+            <div class="container"> 
+                <button class="btn-1">Adicionar ao Carrinho</button>
+            </div>
     </form>
 
     </body>

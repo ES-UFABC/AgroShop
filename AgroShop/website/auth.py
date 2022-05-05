@@ -1,5 +1,7 @@
 import sqlite3
+from types import NoneType
 from flask import Blueprint, render_template, request, flash, redirect, session, url_for
+from sqlalchemy import null
 from website import views
 from werkzeug.security import generate_password_hash, check_password_hash
 from .models import Cliente, Produtor, Produto
@@ -110,7 +112,6 @@ def novo_produto():
         strValidade = request.form.get('data_validade')
         validade = date(int(strValidade[0:4]), int(strValidade[5:7]), int(strValidade[8:]))
         idProd = session.get('conta', None) 
-
         novo_produto = Produto(tipo=tipo, quantidade=quantidade, preco=preco, dataColeta = coleta, dataValidade = validade, idProd = idProd)
         db.session.add(novo_produto)
         db.session.commit()
@@ -120,17 +121,31 @@ def novo_produto():
 
 @auth.route('/HomeCliente', methods = ['GET', 'POST'])
 def home_cliente():
-    if request.method== 'POST':
-        quantidade = request.form.get('quantidade')
-
-    querry = """SELECT Produto.Id, Produtor.Nome, Produto.tipo, Produto.preco, Produto.quantidade, Produto.dataColeta, Produto.dataValidade 
+    querryPrecos = """SELECT Produto.Preco FROM Produto WHERE Produto.Id = (?)"""
+    querryProdutos = """SELECT Produto.Id, Produtor.Nome, Produto.tipo, Produto.preco, Produto.quantidade, Produto.dataColeta, Produto.dataValidade 
     FROM Produto INNER JOIN Produtor on Produto.idProd=Produtor.id"""
     con = sqlite3.connect('AgroShop\website\database.db')
     db = con.cursor()
-    Produtos = db.execute(querry)
+    Produtos = db.execute(querryProdutos)
     Produto=Produtos.fetchall()
+    soma = int(0)
+    PrecoTotal = 0
+    if request.method== 'POST':
+        i = 1
+        while i < 100:
+            quantidade = request.form.get('id ' + str(i))
+            if quantidade == "" or quantidade == null or type(quantidade) == NoneType:
+                pass
+            else:
+                PrecoProd = db.execute(f"SELECT Produto.Preco FROM Produto WHERE Produto.Id = {i}")
+                PrecoProdList = PrecoProd.fetchall()
+                Preco = PrecoProdList[0][0]
+                PrecoTotal += Preco * int(quantidade)
+                soma = soma + int(quantidade)
+            i = i + 1
+            
     con.close()
-    return render_template("home-cliente.html",Produto=Produto)
+    return render_template("home-cliente.html",Produto=Produto,soma=soma,PrecoTotal=PrecoTotal)
 
 @auth.route('/MeuCarrinho', methods = ['GET', 'POST'])
 def meu_carrinho():
