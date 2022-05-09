@@ -1,145 +1,79 @@
 <head>
     <title>Cadastro do Produto</title>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
-<style>
-    .cabecalho {
-        background-color: rgb(52, 53, 61);
-        border-bottom: solid 3px #00B131;
-        box-shadow: 0 0 5px 0 #00B131;
-        height: 55px;
-        box-sizing: content-box;
-        font-family: inherit;
-    }
-    body {
-        margin: 0;
-        font-family: 'Jost', sans-serif;
-        background: linear-gradient(to left, #ffffff, #dbffe4);
-        font-weight: bold;
-    }
-    input[type=number] {
-        width: 300px;
-        border:2px #00B131 solid;
-        border-radius: 4px;
-        margin: 8px 0;
-        outline: none;
-        padding: 8px;
-        box-sizing: border-box;
-        transition: .3s;
-        font-family: inherit;
-        text-align: center;
-    }
-    input[type=number]:focus {
-        border-color: #00B131;
-        box-shadow: 0 0 8px 0 #50ff7f;
-    }
-    input[type=text],input[type=date] {
-        width: 300px;
-        border:2px #00B131 solid;
-        border-radius: 4px;
-        margin: 8px 0;
-        outline: none;
-        padding: 8px;
-        box-sizing: border-box;
-        transition: .3s;
-        font-family: inherit;
-        text-align: center;
-    }
-    input[type=text]:focus, input[type=date]:focus {
-        border-color: #00B131;
-        box-shadow: 0 0 8px 0 #50ff7f;
-    }
-    .container {
-        display: flex;
-        flex-direction:row;
-        justify-content: space-evenly ;
-        align-items: center;
-        text-align: center;
-    }
-    .btn-1{
-        width: 300px;
-        border: none;
-        color: #50ff7f;
-        background-color: #2d2d2d;
-        border-radius: 4px;
-        box-shadow: inset 0 0 0 0 #50ff7f;
-        transition: ease-out 0.185s;
-        font-size: 30px;
-        outline: none;
-        font-family: inherit;
-    }
-    .btn-1:hover{
-        box-shadow: inset 300px 0 0 0 #50ff7f;
-        cursor: pointer;
-        color: #2d2d2d;
-    }
-    .menu {
-        display: inline-block;
-        vertical-align: top;
-        height: 5px;
-        padding: 10px;
-    }
-    .menu ul {
-        margin: 0;
-        padding: 0;
-    }
-    .menu li {
-        display: inline-block;
-    }
-    .menu a {
-        text-decoration: none;
-        color: #26d755;
-        font-size: 1.3em;
-        text-shadow: 2px 2px 2px #2d2d2d;
-        padding: 15px;
-    }
-    .menu a:hover {
-        color: #74ea93;
-    }
-    .form-group{
-        text-align: center;
-    }
-    .opcao{
-        width: 100%;
-        border:2px #00B131 solid;
-        border-radius: 4px;
-        margin: 8px 0;
-        outline: none;
-        padding: 8px;
-        box-sizing: border-box;
-        transition: .3s;
-        font-family: inherit;
-        text-align: center;
-    }
-    .opcao:focus{
-        border-color: #00B131;
-        box-shadow: 0 0 8px 0 #50ff7f;
-    }
-</style>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,700&family=Nunito:wght@700&family=Yellowtail&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" href="../static/css/new-product.css">
+    <style>
+        .form-group {
+            text-align: center;
+        }
+
+        .opcao {
+            width: 40%;
+            border: 2px #045c04 solid;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 8px;
+            box-sizing: border-box;
+            transition: .3s;
+            font-family: inherit;
+            text-align: center;
+        }
+
+        .opcao:focus {
+            border-color: #00B131;
+            box-shadow: 0 0 8px 0 #50ff7f;
+        }
+
+        input[type=number],
+        input[type=date] {
+            width: 25%;
+            border: 2px #045c04 solid;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 8px;
+            box-sizing: border-box;
+            transition: .3s;
+            font-family: inherit;
+            text-align: center;
+        }
+
+        input[type=date]:focus,
+        input[type=number]:focus,
+        input[type=password]:focus {
+            border-color: #045c04;
+            box-shadow: 0 0 8px 0 #045c04;
+        }
+    </style>
 </head>
+
 <body>
-    <header class="cabecalho"> 
-        <nav class="menu">
+    <nav id="topo">
+        <a href="/">AgroShop</a>
         <ul>
-            <li>
-                <a href="/">Home</a>
-            </li>
-            <li>
-                <a href="entrar">Entrar</a>
-            </li>
-            <li>
-                <a href="cadastrar">Cadastrar</a>
-            </li>
-            <li>
-              <a href="logout">Logout</a>
-          </li>
+            <li><a href="entrar">Entrar</a></li>
+            <li><a href="cadastrar">Cadastrar</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#serviços">Serviços</a></li>
+            <li><a href="#fotos">Fotos</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="logout">Logout</a></li>
         </ul>
-    </nav> 
-    </header>
+    </nav>
     <form method="POST">
-    <h3 align="center">CADASTRO DO PRODUTO</h3>
-    <div class="form-group">
-        <label>Tipo do Produto <br> </label>
-         <select class="opcao" name="tipo" style="width:300px;" placeholder="Digite o tipo do Produto">
+        <h3 align="center">CADASTRO DO PRODUTO</h3>
+        <div class="form-group">
+            <label>Tipo do Produto <br> </label>
+            <select class="opcao" name="tipo" style="width:300px;" placeholder="Digite o tipo do Produto">
                 <option selected value="Alface">Alface</option>
                 <option value="Tomate">Tomate</option>
                 <option value="Banana">Banana</option>
@@ -147,56 +81,49 @@
                 <option value="Ovo">Ovo</option>
                 <option value="Cenoura">Cenoura</option>
             </select>
-       
-    </div>
-    <div class="form-group">
-        <label for="quantidade">Quantidade</label>
-    <br>
-        <input type="number"
-            min="0" 
-            max="10000"
-            class="form-control"
-            id="quantidade"
-            name="quantidade"
-            placeholder="Digite a Quantidade"
-        />
-    </div>
-    <div class="form-group">
-        <label for="preco">Preço por unidade:</label>
-        <br>
-        <input type="number"
-            placeholder="R$"
-            step='0.01'  
-            class="form-control"
-            id="preco"
-            name="preco"
-        />
-    </div>
-    <div class="form-group">
-        <label for="data_coleta">Data de Coleta:</label>
-        <br>
-        <input
-            type="date"
-            class="form-control"
-            id="data_coleta"
-            name="data_coleta"
-            placeholder="dd/mm/aaaa"
-        />
-    </div>
-    <div class="form-group">
-        <label for="data_validade">Data de Validade:</label>
-        <br>
-        <input
-            type="date"
-            class="form-control"
-            id="data_validade"
-            name="data_validade"
-            placeholder="dd/mm/aaaa"
-        />
-    </div>
-    <br />
-    <div class="container"> 
-        <button class="btn-1">Cadastrar Produto</button>
-    </div>
-</form>
+
+        </div>
+        <div class="form-group">
+            <label for="quantidade">Quantidade</label>
+            <br>
+            <input type="number" min="0" max="10000" class="form-control" id="quantidade" name="quantidade"
+                placeholder="Digite a Quantidade" />
+        </div>
+        <div class="form-group">
+            <label for="preco">Preço por unidade:</label>
+            <br>
+            <input type="number" placeholder="R$" step='0.01' class="form-control" id="preco" name="preco" />
+        </div>
+        <div class="form-group">
+            <label for="data_coleta">Data de Coleta:</label>
+            <br>
+            <input type="date" class="form-control" id="data_coleta" name="data_coleta" placeholder="dd/mm/aaaa" />
+        </div>
+        <div class="form-group">
+            <label for="data_validade">Data de Validade:</label>
+            <br>
+            <input type="date" class="form-control" id="data_validade" name="data_validade" placeholder="dd/mm/aaaa" />
+        </div>
+        <br />
+        <div class="container">
+            <button class="btn-1">Cadastrar Produto</button>
+        </div>
+    </form>
+    <section id="contato">
+        <h2>Contato</h2>
+        <p>Fale Conosco!</p>
+        <div>
+            <img src="../static/img/icon_whatsapp.png" alt="WhatsApp">
+            <p><a href="tel:11123456789"></a>(11)12345-6789</p>
+        </div>
+        <div>
+            <img src="../static/img/icon_gmail.png" alt="E-mail">
+            <p><a href="mailto:agroshop@gmail.com"></a>agroshop@gmail.com</p>
+        </div>
+    </section>
+
+    <footer>
+        <a href="#topo">Voltar ao topo</a>
+        <p>Desenvolvido por Grupo 21</p>
+    </footer>
 </body>

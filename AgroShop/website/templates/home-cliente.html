@@ -7,6 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgroShop - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,700&family=Nunito:wght@700&family=Yellowtail&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" href="../static/css/home-cliente.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -18,87 +27,22 @@
         crossorigin="anonymous"></script>
 </head>
 <style>
-    * {
-        box-sizing: border-box;
-    }
 
-    body {
-        margin: 0;
-        font-family: 'Jost', sans-serif;
-        background: linear-gradient(to left, #ffffff, #dbffe4);
-        font-weight: bold;
-    }
-
-    .cabecalho {
-        margin: 0%;
-        background-color: rgb(52, 53, 61);
-        border-bottom: solid 3px #00B131;
-        box-shadow: 0 0 5px 0 #00B131;
-        height: 55px;
-        box-sizing: content-box;
-    }
-
-    .menu {
-        display: inline-block;
-        vertical-align: top;
-        height: 5px;
-        padding: 10px;
-    }
-
-    .menu ul {
-        margin: 0;
-        padding: 0;
-    }
-
-    .menu li {
-        display: inline-block;
-    }
-
-    .menu a:hover {
-        color: #74ea93;
-    }
-
-    .menu a {
-        text-decoration: none;
-        color: #26d755;
-        font-size: 1.3em;
-        text-shadow: 2px 2px 2px #2d2d2d;
-        padding: 15px;
-    }
-
-    h1 {
-        text-align: center;
-    }
-
-    .alert-danger {
-        padding: 20px;
-        margin-left: 450px;
-        margin-right: 450px;
-        margin-bottom: 20px;
-        background-color: rgb(235, 98, 98);
-        text-align: center;
-    }
-
-    .alert-success {
-        padding: 20px;
-        margin-left: 450px;
-        margin-right: 450px;
-        margin-bottom: 20px;
-        background-color: #50ff7f;
-        text-align: center;
-    }
-
-    .botao {
-        color: #FFFFFF;
-        text-decoration: none;
-        padding: 10px 30px;
-        background-color: #001100;
-        font-size: .9em;
-        border-radius: 3px;
-    }
 </style>
 
 <body>
+    <nav id="topo">
+        <a href="/">AgroShop</a>
+        <ul>
+            <li><a href="entrar">Entrar</a></li>
+            <li><a href="cadastrar">Cadastrar</a></li>
+            <li><a href="/#sobre">Sobre</a></li>
+            <li><a href="/#serviços">Serviços</a></li>
+            <li><a href="/#fotos">Fotos</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="logout">Logout</a></li>
+        </ul>
+    </nav>
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {% for category, message in messages %} {% if category ==
     'error' %}
@@ -116,24 +60,6 @@
         </button>
     </div>
     {% endif %} {% endfor %} {% endif %} {% endwith %}
-    <header class="cabecalho">
-        <nav class="menu">
-            <ul>
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="entrar">Entrar</a>
-                </li>
-                <li>
-                    <a href="cadastrar">Cadastrar</a>
-                </li>
-                <li>
-                    <a href="logout">Logout</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
     <h1>AgroShop Home</h1>
 
     <html>
@@ -144,15 +70,15 @@
 
     <body>
         <form method="post">
-        <table>
-            <tr>
-                <th>Produtor</th>
-                <th>Produto</th>
-                <th>Data de Validade</th>
-                <th>Data de Coleta</th>
-                <th>Nome do Vendedor</th>
-            </tr>
-        </table>
+            <table>
+                <tr>
+                    <th>Produtor</th>
+                    <th>Produto</th>
+                    <th>Data de Validade</th>
+                    <th>Data de Coleta</th>
+                    <th>Nome do Vendedor</th>
+                </tr>
+            </table>
 
             {% for produto in Produto %}
             <tr>
@@ -164,10 +90,26 @@
             <br>
             <br>
             {% endfor %}
-        
-        <button class="btn-1">Adicionar ao Carrinho</button>
-    </form>
 
+            <button class="btn-1">Adicionar ao Carrinho</button>
+        </form>
+        <section id="contato">
+            <h2>Contato</h2>
+            <p>Fale Conosco!</p>
+            <div>
+                <img src="../static/img/icon_whatsapp.png" alt="WhatsApp">
+                <p><a href="tel:11123456789"></a>(11)12345-6789</p>
+            </div>
+            <div>
+                <img src="../static/img/icon_gmail.png" alt="E-mail">
+                <p><a href="mailto:agroshop@gmail.com"></a>agroshop@gmail.com</p>
+            </div>
+        </section>
+
+        <footer>
+            <a href="#topo">Voltar ao topo</a>
+            <p>Desenvolvido por Grupo 21</p>
+        </footer>
     </body>
 
     </html>
