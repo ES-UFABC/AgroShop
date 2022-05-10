@@ -1,3 +1,4 @@
+from re import L
 import sqlite3
 from types import NoneType
 from flask import Blueprint, render_template, request, flash, redirect, session, url_for
@@ -12,13 +13,21 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/entrar', methods = ['GET', 'POST'])
 def login():
+    loginCliente = session.get('contaCliente', None)
+    loginProdutor = session.get('conta', None)
+    if loginCliente != None:
+        return redirect(url_for('auth.home_cliente'))
+    if loginProdutor != None:
+        return redirect(url_for('auth.home_prod'))
+
     if request.method == 'POST':
         email = request.form.get('email')
         senha = request.form.get('password')
         usuario = Cliente.query.filter_by(email=email).first()
         if usuario:
             if check_password_hash(usuario.senha, senha):
-                flash('Login efetuado com Sucesso!', category='success')
+                flash('Login efetuado com Sucesso!', category='error')
+                session['contaCliente'] = usuario.id
                 return redirect(url_for('auth.home_cliente'))
             else:
                 flash('Senha Incorreta', category='error')
@@ -26,7 +35,7 @@ def login():
             usuario = Produtor.query.filter_by(email=email).first()
             if usuario:
                 if check_password_hash(usuario.senha, senha):
-                    flash('Login efetuado com Sucesso!', category='success')
+                    flash('Login efetuado com Sucesso!', category='error')
                     session['conta'] = usuario.id
                     return redirect(url_for('auth.home_prod'))
                 else:
@@ -38,7 +47,9 @@ def login():
 
 @auth.route('/logout')
 def logout():
-    return("<p>Logout</p>")
+    session['conta'] = None
+    session['contaCliente'] = None
+    return redirect(url_for('views.home'))
 
 @auth.route('/cadastrar/cliente', methods = ['GET', 'POST'])
 def sign_up_client():
@@ -63,7 +74,7 @@ def sign_up_client():
             new_user = Cliente(email=email, senha=generate_password_hash(senha1, method='sha256'), nome=nome)
             db.session.add(new_user)
             db.session.commit()
-            flash('Account created!', category='success')
+            flash('Account created!', category='error')
             #return redirect(url_for('auth.home_cliente'))
 
     return render_template("sign-up-client.html")
@@ -92,7 +103,7 @@ def sign_up_prod():
             new_user = Produtor(email=email, senha=generate_password_hash(senha1, method='sha256'), nome=nome)
             db.session.add(new_user)
             db.session.commit()
-            flash('Account created!', category='success')
+            flash('Account created!', category='error')
             return redirect(url_for('views.home'))
     
     return render_template("sign-up-prod.html")
@@ -103,6 +114,11 @@ def home_prod():
 
 @auth.route('/NovoProduto', methods = ['GET', 'POST'])
 def novo_produto():
+    loginProdutor = session.get('conta', None)
+    if loginProdutor == None:
+        flash('Faça o login em uma conta de produtor', category='error')
+        return redirect(url_for('views.home'))
+    
     if request.method == 'POST':    
         tipo = request.form.get('tipo')
         quantidade = request.form.get('quantidade')
@@ -111,17 +127,16 @@ def novo_produto():
         coleta = date(int(strColeta[0:4]), int(strColeta[5:7]), int(strColeta[8:]))       
         strValidade = request.form.get('data_validade')
         validade = date(int(strValidade[0:4]), int(strValidade[5:7]), int(strValidade[8:]))
-        idProd = session.get('conta', None) 
+        idProd = session.get('conta', None)
         novo_produto = Produto(tipo=tipo, quantidade=quantidade, preco=preco, dataColeta = coleta, dataValidade = validade, idProd = idProd)
         db.session.add(novo_produto)
         db.session.commit()
-        flash('Produto Registrado', category='success')
+        flash('Produto Registrado', category='error')
         return redirect(url_for('auth.home_prod'))
     return render_template("new-product.html")
 
 @auth.route('/HomeCliente', methods = ['GET', 'POST'])
 def home_cliente():
-    querryPrecos = """SELECT Produto.Preco FROM Produto WHERE Produto.Id = (?)"""
     querryProdutos = """SELECT Produto.Id, Produtor.Nome, Produto.tipo, Produto.preco, Produto.quantidade, Produto.dataColeta, Produto.dataValidade 
     FROM Produto INNER JOIN Produtor on Produto.idProd=Produtor.id"""
     con = sqlite3.connect('AgroShop\website\database.db')
@@ -150,4 +165,20 @@ def home_cliente():
 @auth.route('/MeuCarrinho', methods = ['GET', 'POST'])
 def meu_carrinho():
     return render_template("home-cliente.html")
+
+@auth.route('/Mercado', methods = ['GET','POST'])
+def mercado():
+    loginCliente = session.get('contaCliente', None)
+    if loginCliente != None:
+        return redirect(url_for('auth.home_cliente'))
+
+    querryProdutos = """SELECT Produto.Id, Produtor.Nome, Produto.tipo, Produto.preco, Produto.quantidade, Produto.dataColeta, Produto.dataValidade 
+    FROM Produto INNER JOIN Produtor on Produto.idProd=Produtor.id"""
+    con = sqlite3.connect('AgroShop\website\database.db')
+    db = con.cursor()
+    Produtos = db.execute(querryProdutos)
+    Produto=Produtos.fetchall()
+    con.close()
+    return render_template("mercado.html",Produto=Produto)
+    
 
