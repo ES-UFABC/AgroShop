@@ -27,7 +27,33 @@
         crossorigin="anonymous"></script>
 </head>
 <style>
+    .form-group {
+        display: inline-block;
+        font-family: Nunito, sans-serif;
+        color: rgb(255, 255, 255);
+        border: solid 1px #ccc;
+        box-shadow: 0 4px 10px 0 rgba(6, 6, 6, 0.3);
+        height: 200px;
+        width: 260px;
+        margin: 30px;
+        padding: 5px;
+        background-color: #fff;
+    }
 
+    .botao {
+        font-family: Nunito, sans-serif;
+        color: black;
+        background-color: #ffffff;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .preco {
+        color: green;
+        font-weight: bold;
+        font-size: 1.2em;
+        margin: 0%;
+    }
 </style>
 
 <body>
@@ -36,10 +62,9 @@
         <ul>
             <li><a href="entrar">Entrar</a></li>
             <li><a href="cadastrar">Cadastrar</a></li>
-            <li><a href="/#sobre">Sobre</a></li>
-            <li><a href="/#serviços">Serviços</a></li>
-            <li><a href="/#fotos">Fotos</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a href="NovoProduto">Cadastrar Produto</a></li>
+            <li><a href="Mercado">Mercado</a></li>
+            <li><a href="carrinho">Meu Carrinho</a></li>
             <li><a href="logout">Logout</a></li>
         </ul>
     </nav>
@@ -70,27 +95,38 @@
 
     <body>
         <form method="post">
-        <table>
-            <tr>
-                <th>Produtor</th>
-                <th>Produto</th>
-                <th>Data de Validade</th>
-                <th>Data de Coleta</th>
-                <th>Nome do Vendedor</th>
-        </table>
-
             {% for produto in Produto %}
             <tr>
-                    <a href="#serviços" class="botao">{{produto}}</a>
+                <div class="form-group">
+                    <h1 class="botao">
+                        {{produto[1]}}
+                        <br><br>{{produto[2]}}
+                        <br><br>Colheita: {{produto[5]}}
+                        <br><br>Validade: {{produto[6]}}
+                        <br><br>
+                        <div class="preco">Por R$ {{produto[3]}}/ unidade</div>
+                    </h1><br>
+                </div>
             </tr>
-            <br>
-            <br>
-            <br>
             {% endfor %}
-            <br>
-            <li><a href="/entrar">Entrar</a></li>
-    </form>
+        </form>
+        <section id="contato">
+            <h2>Contato</h2>
+            <p>Fale Conosco!</p>
+            <div>
+                <img src="../static/img/icon_whatsapp.png" alt="WhatsApp">
+                <p><a href="tel:11123456789"></a>(11)12345-6789</p>
+            </div>
+            <div>
+                <img src="../static/img/icon_gmail.png" alt="E-mail">
+                <p><a href="mailto:agroshop@gmail.com"></a>agroshop@gmail.com</p>
+            </div>
+        </section>
 
+        <footer>
+            <a href="#topo">Voltar ao topo</a>
+            <p>Desenvolvido por Grupo 21</p>
+        </footer>
     </body>
 
     </html>

@@ -27,7 +27,72 @@
         crossorigin="anonymous"></script>
 </head>
 <style>
+    .form-group {
+        display: inline-block;
+        font-family: Nunito, sans-serif;
+        color: rgb(255, 255, 255);
+        border: solid 1px #ccc;
+        box-shadow: 0 4px 10px 0 rgba(6, 6, 6, 0.3);
+        height: 200px;
+        width: 260px;
+        margin: 30px;
+        padding: 5px;
+        background-color: #fff;
+    }
 
+    .botao {
+        font-family: Nunito, sans-serif;
+        color: black;
+        background-color: #ffffff;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    input[type=number] {
+        width: 260px;
+        border: 2px #045c04 solid;
+        border-radius: 4px;
+        margin: 8px 0;
+        outline: none;
+        padding: 8px;
+        box-sizing: border-box;
+        transition: .3s;
+        font-family: inherit;
+        text-align: center;
+    }
+
+    input[type=number]:focus {
+        border-color: #045c04;
+        box-shadow: 0 0 8px 0 #045c04;
+    }
+
+    .carrinho {
+        text-decoration: none;
+        border: none;
+        padding: 5px;
+        color: #ffffff;
+        background-color: #045c04;
+        border-radius: 4px;
+        box-shadow: inset 0 0 0 0 #fff;
+        transition: ease-out 0.185s;
+        font-size: 20px;
+        outline: none;
+        font-family: inherit;
+    }
+
+    .carrinho:hover {
+        box-shadow: inset 300px 0 0 0 #fff;
+        cursor: pointer;
+        color: #045c04;
+        border: 1.5px solid #045c04;
+    }
+
+    .preco {
+        color: green;
+        font-weight: bold;
+        font-size: 1.2em;
+        margin: 0%;
+    }
 </style>
 
 <body>
@@ -36,10 +101,9 @@
         <ul>
             <li><a href="entrar">Entrar</a></li>
             <li><a href="cadastrar">Cadastrar</a></li>
-            <li><a href="/#sobre">Sobre</a></li>
-            <li><a href="/#serviços">Serviços</a></li>
-            <li><a href="/#fotos">Fotos</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a href="NovoProduto">Cadastrar Produto</a></li>
+            <li><a href="Mercado">Mercado</a></li>
+            <li><a href="carrinho">Meu Carrinho</a></li>
             <li><a href="logout">Logout</a></li>
         </ul>
     </nav>
@@ -60,7 +124,7 @@
         </button>
     </div>
     {% endif %} {% endfor %} {% endif %} {% endwith %}
-    <h1>AgroShop Home</h1>
+    <h1 class="home">AgroShop Home</h1>
 
     <html>
 
@@ -70,37 +134,33 @@
 
     <body>
         <form method="post">
-            <table>
-                <tr>
-                    <th>Produtor</th>
-                    <th>Produto</th>
-                    <th>Data de Validade</th>
-                    <th>Data de Coleta</th>
-                    <th>Nome do Vendedor</th>
-                </tr>
-            </table>
 
             {% for produto in Produto %}
             <tr>
                 <div class="form-group">
-                    <a href="#serviços" class="botao">{{produto}}</a>
-                    <input type="number" min="0" max="10000" class="form-control" id="id {{produto[0]}}" name="id {{produto[0]}}"
-                    placeholder="Digite a Quantidade" />
+                    <h1 class="botao">
+                        {{produto[1]}}
+                        <br><br>{{produto[2]}}
+                        <br><br>Colheita: {{produto[5]}}
+                        <br><br>Validade: {{produto[6]}}
+                        <br><br>
+                        <div class="preco">Por R$ {{produto[3]}}/ unidade</div>
+                    </h1><br>
+                    <input type="number" min="0" max="10000" class="form-control" id="id {{produto[0]}}"
+                        name="id {{produto[0]}}" placeholder="Digite a Quantidade" />
                 </div>
             </tr>
-            <br>
-            <br>
-            <br>
             {% endfor %}
             <br>
             <br>
-            {{soma}} Produtos selecionado      Valor Total: R${{PrecoTotal}}
-            <div class="container"> 
+            {{soma}} Produtos selecionado Valor Total: R${{PrecoTotal}}
+            <div class="container">
                 <button class="btn-1">Adicionar ao Carrinho</button>
             </div>
-    </form>
-
-            <button class="btn-1">Adicionar ao Carrinho</button>
+            <br>
+            <div>
+                <a href="/carrinho" class="carrinho">Ir para o Carrinho</a>
+            </div>
         </form>
         <section id="contato">
             <h2>Contato</h2>
