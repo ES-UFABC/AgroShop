@@ -5,7 +5,7 @@ from flask import Blueprint, render_template, request, flash, redirect, session,
 from sqlalchemy import null
 from website import views
 from werkzeug.security import generate_password_hash, check_password_hash
-from .models import Cliente, Produtor, Produto
+from .models import Carrinho, Cliente, Produtor, Produto
 from . import db
 from datetime import date
 
@@ -137,11 +137,11 @@ def novo_produto():
 
 @auth.route('/HomeCliente', methods = ['GET', 'POST'])
 def home_cliente():
-    querryProdutos = """SELECT Produto.Id, Produtor.Nome, Produto.tipo, Produto.preco, Produto.quantidade, Produto.dataColeta, Produto.dataValidade 
+    queryProdutos = """SELECT Produto.Id, Produtor.Nome, Produto.tipo, Produto.preco, Produto.quantidade, Produto.dataColeta, Produto.dataValidade 
     FROM Produto INNER JOIN Produtor on Produto.idProd=Produtor.id"""
     con = sqlite3.connect('AgroShop\website\database.db')
-    db = con.cursor()
-    Produtos = db.execute(querryProdutos)
+    db2 = con.cursor()
+    Produtos = db2.execute(queryProdutos)
     Produto=Produtos.fetchall()
     soma = int(0)
     PrecoTotal = 0
@@ -152,13 +152,21 @@ def home_cliente():
             if quantidade == "" or quantidade == null or type(quantidade) == NoneType:
                 pass
             else:
-                PrecoProd = db.execute(f"SELECT Produto.Preco FROM Produto WHERE Produto.Id = {i}")
+                PrecoProd = db2.execute(f"SELECT Produto.Preco FROM Produto WHERE Produto.Id = {i}")
                 PrecoProdList = PrecoProd.fetchall()
                 Preco = PrecoProdList[0][0]
                 PrecoTotal += Preco * int(quantidade)
                 soma = soma + int(quantidade)
+                idProduto = i
+                idProdutorv = db2.execute(f"SELECT idProd FROM Produto WHERE id = {i}")
+                idProdutolist = idProdutorv.fetchall()
+                idProdutor = idProdutolist[0][0]
+                idCliente = session.get('contaCliente', None)
+                compra = Carrinho(idProduto=idProduto,idProdutor=int(idProdutor),idCliente=int(idCliente),quantidade=int(quantidade))
+                db.session.add(compra)
+                db.session.commit()
             i = i + 1
-            
+        flash('Produto Adicionado ao Carrinho', category='success')
     con.close()
     return render_template("home-cliente.html",Produto=Produto,soma=soma,PrecoTotal=PrecoTotal)
 
@@ -172,13 +180,44 @@ def mercado():
     if loginCliente != None:
         return redirect(url_for('auth.home_cliente'))
 
-    querryProdutos = """SELECT Produto.Id, Produtor.Nome, Produto.tipo, Produto.preco, Produto.quantidade, Produto.dataColeta, Produto.dataValidade 
+    queryProdutos = """SELECT Produto.Id, Produtor.Nome, Produto.tipo, Produto.preco, Produto.quantidade, Produto.dataColeta, Produto.dataValidade 
     FROM Produto INNER JOIN Produtor on Produto.idProd=Produtor.id"""
     con = sqlite3.connect('AgroShop\website\database.db')
     db = con.cursor()
-    Produtos = db.execute(querryProdutos)
+    Produtos = db.execute(queryProdutos)
     Produto=Produtos.fetchall()
     con.close()
     return render_template("mercado.html",Produto=Produto)
+
+@auth.route('/carrinho', methods = ['GET','POST'])
+def carrinho():
+    queryCarrinho = """SELECT Carrinho.quantidade, Produto.tipo, Produto.preco FROM Produto INNER JOIN Carrinho on Carrinho.idProduto =Produto.id"""
+    con = sqlite3.connect('AgroShop\website\database.db')
+    db2 = con.cursor()
+    Produtos = db2.execute(queryCarrinho)
+    Produto=Produtos.fetchall()
+
+    if request.method== 'POST':
+        i = 1
+        while i < 100:
+            quantidade = request.form.get('id ' + str(i))
+            if quantidade == "" or quantidade == null or type(quantidade) == NoneType:
+                pass
+            else:
+                PrecoProd = db2.execute(f"SELECT Produto.Preco FROM Produto WHERE Produto.Id = {i}")
+                PrecoProdList = PrecoProd.fetchall()
+                Preco = PrecoProdList[0][0]
+                PrecoTotal += Preco * int(quantidade)
+                soma = soma + int(quantidade)
+                idProduto = i
+                idProdutorv = db2.execute(f"SELECT idProd FROM Produto WHERE id = {i}")
+                idProdutolist = idProdutorv.fetchall()
+                idProdutor = idProdutolist[0][0]
+                idCliente = session.get('contaCliente', None)
+                compra = Carrinho(idProduto=idProduto,idProdutor=int(idProdutor),idCliente=int(idCliente),quantidade=int(quantidade))
+                db.session.add(compra)
+                db.session.commit()
+            i = i + 1
+    return render_template("carrinho.html",Produto=Produto)
     
 

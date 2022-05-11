@@ -26,3 +26,11 @@ class Produto(db.Model, UserMixin):
     quantidade = db.Column(db.Integer)
     dataColeta = db.Column(db.Date)
     dataValidade = db.Column(db.Date)
+
+class Carrinho(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    idProdutor = db.Column(db.Integer)
+    idProduto = db.Column(db.Integer)
+    idCliente = db.Column(db.Integer)
+    quantidade = db.Column(db.Integer)
+

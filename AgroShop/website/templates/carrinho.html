@@ -1,0 +1,25 @@
+hello dri!
+<body>
+    <form method="post">
+    <table>
+        <tr>
+            <th>Produtor</th>
+            <th>Produto</th>
+            <th>Data de Validade</th>
+            <th>Data de Coleta</th>
+            <th>Nome do Vendedor</th>
+    </table>
+
+        {% for produto in Produto %}
+        <tr>
+                <a href="#serviços" class="botao">{{produto}}</a>
+        </tr>
+        <br>
+        <br>
+        <br>
+        {% endfor %}
+        <br>
+        <li><a href="/entrar">Comprar</a></li>
+</form>
+
+</body>
