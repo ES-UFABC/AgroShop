@@ -189,7 +189,7 @@ def mercado():
 @auth.route('/carrinho', methods = ['GET','POST'])
 def carrinho():
     idCliente = session.get('contaCliente', None)
-    queryCarrinho = f"""SELECT Produto.tipo, SUM(Carrinho.quantidade), ROUND(SUM(Produto.preco), 2) FROM Produto INNER JOIN Carrinho on Carrinho.idProduto = Produto.id WHERE Carrinho.idCliente = {idCliente} GROUP BY Carrinho.idProduto"""
+    queryCarrinho = f"""SELECT Produto.tipo, SUM(Carrinho.quantidade), Produto.Preco, ROUND(SUM(Produto.preco), 2) FROM Produto INNER JOIN Carrinho on Carrinho.idProduto = Produto.id WHERE Carrinho.idCliente = {idCliente} GROUP BY Carrinho.idProduto"""
     con = sqlite3.connect('AgroShop\website\database.db')
     db2 = con.cursor()
     Produtos = db2.execute(queryCarrinho)
