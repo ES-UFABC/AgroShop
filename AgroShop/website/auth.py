@@ -191,24 +191,26 @@ def mercado():
 @auth.route('/carrinho', methods = ['GET','POST'])
 def carrinho():
     idCliente = session.get('contaCliente', None)
-    queryCarrinho = f"""SELECT Carrinho.quantidade, Produto.tipo, Produto.preco FROM Produto INNER JOIN Carrinho on Carrinho.idProduto = Produto.id WHERE Carrinho.idCliente = {idCliente}"""
+    queryCarrinho = f"""SELECT Produto.tipo, SUM(Carrinho.quantidade), ROUND(SUM(Produto.preco), 2) FROM Produto INNER JOIN Carrinho on Carrinho.idProduto = Produto.id WHERE Carrinho.idCliente = {idCliente} GROUP BY Carrinho.idProduto"""
     con = sqlite3.connect('AgroShop\website\database.db')
     db2 = con.cursor()
     Produtos = db2.execute(queryCarrinho)
     Produto=Produtos.fetchall()
-
-    if request.method== 'POST':
+    PrecoTotal = 0
+    for i in Produto:
+        PrecoTotal += i[2] * i[1]
+    PrecoTotal = round(PrecoTotal, 2)
+    """if request.method== 'POST':
         i = 1
         while i < 100:
             quantidade = request.form.get('id ' + str(i))
             if quantidade == "" or quantidade == null or quantidade is None:
                 pass
             else:
-                PrecoProd = db2.execute(f"SELECT Produto.Preco FROM Produto WHERE Produto.Id = {i}")
+                PrecoProd = db2.execute(f""""SELECT ROUND(SUM(Produto.preco), 2) FROM Produto INNER JOIN Carrinho on Carrinho.idProduto = Produto.id WHERE Carrinho.idCliente = {idCliente} GROUP BY Carrinho.idProduto"""")
                 PrecoProdList = PrecoProd.fetchall()
                 Preco = PrecoProdList[0][0]
-                PrecoTotal += Preco * int(quantidade)
-                soma = soma + int(quantidade)
+                PrecoTotal += Preco
                 idProduto = i
                 idProdutorv = db2.execute(f"SELECT idProd FROM Produto WHERE id = {i}")
                 idProdutolist = idProdutorv.fetchall()
@@ -217,7 +219,7 @@ def carrinho():
                 compra = Carrinho(idProduto=idProduto,idProdutor=int(idProdutor),idCliente=int(idCliente),quantidade=int(quantidade))
                 db.session.add(compra)
                 db.session.commit()
-            i = i + 1
-    return render_template("carrinho.html",Produto=Produto)
+            i = i + 1"""
+    return render_template("carrinho.html",Produto=Produto, PrecoTotal = PrecoTotal)
     
 
