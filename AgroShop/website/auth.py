@@ -80,13 +80,11 @@ def sign_up_client():
 
 @auth.route('/cadastrar/produtor', methods = ['GET', 'POST'])
 def sign_up_prod():
-    
     if request.method == 'POST':
         email = request.form.get('email')
         nome = request.form.get('nome')
         senha1 = request.form.get('senha1')
         senha2 = request.form.get('senha2')
-
         usuario = Produtor.query.filter_by(email=email).first()
         if usuario:
             flash('Email já cadastrado', category='error')
