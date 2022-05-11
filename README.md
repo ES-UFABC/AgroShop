@@ -22,6 +22,7 @@ MIT © AgroShop. Para demais informações, ver o arquivo LICENSE.
 * Jihad Abdul
 * João Bianchim
 * Joao Souza
+* Leonardo Barroca
 
 # Linguagens
 ## Front-End
