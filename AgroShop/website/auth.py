@@ -1,6 +1,5 @@
 from re import L
 import sqlite3
-from types import NoneType
 from flask import Blueprint, render_template, request, flash, redirect, session, url_for
 from sqlalchemy import null
 from website import views
@@ -149,7 +148,7 @@ def home_cliente():
         i = 1
         while i < 100:
             quantidade = request.form.get('id ' + str(i))
-            if quantidade == "" or quantidade == null or type(quantidade) == NoneType:
+            if quantidade == "" or quantidade == null or quantidade is None:
                 pass
             else:
                 PrecoProd = db2.execute(f"SELECT Produto.Preco FROM Produto WHERE Produto.Id = {i}")
@@ -191,7 +190,8 @@ def mercado():
 
 @auth.route('/carrinho', methods = ['GET','POST'])
 def carrinho():
-    queryCarrinho = """SELECT Carrinho.quantidade, Produto.tipo, Produto.preco FROM Produto INNER JOIN Carrinho on Carrinho.idProduto =Produto.id"""
+    idCliente = session.get('contaCliente', None)
+    queryCarrinho = f"""SELECT Carrinho.quantidade, Produto.tipo, Produto.preco FROM Produto INNER JOIN Carrinho on Carrinho.idProduto = Produto.id WHERE Carrinho.idCliente = {idCliente}"""
     con = sqlite3.connect('AgroShop\website\database.db')
     db2 = con.cursor()
     Produtos = db2.execute(queryCarrinho)
@@ -201,7 +201,7 @@ def carrinho():
         i = 1
         while i < 100:
             quantidade = request.form.get('id ' + str(i))
-            if quantidade == "" or quantidade == null or type(quantidade) == NoneType:
+            if quantidade == "" or quantidade == null or quantidade is None:
                 pass
             else:
                 PrecoProd = db2.execute(f"SELECT Produto.Preco FROM Produto WHERE Produto.Id = {i}")
